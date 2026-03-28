@@ -20,7 +20,11 @@ _BASE_DIR = Path(__file__).parent.parent
 
 
 def create_app(env: str = "default") -> Flask:
-    app = Flask(__name__, template_folder=str(_BASE_DIR / "templates"))
+    app = Flask(
+        __name__,
+        template_folder=str(_BASE_DIR / "templates"),
+        static_folder=str(_BASE_DIR / "static"),
+    )
     app.config.from_object(app_config[env])
 
     init_db(app)

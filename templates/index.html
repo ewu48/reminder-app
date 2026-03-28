@@ -4,241 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reminder App</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-    }
-
-    .container { max-width: 680px; margin: 0 auto; }
-
-    h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-      color: #f8fafc;
-    }
-
-    .subtitle {
-      font-size: 0.875rem;
-      color: #64748b;
-      margin-bottom: 2rem;
-    }
-
-    .ntfy-banner {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-left: 4px solid #6366f1;
-      border-radius: 8px;
-      padding: 0.875rem 1rem;
-      margin-bottom: 2rem;
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
-
-    .ntfy-banner strong { color: #a5b4fc; }
-
-    .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      color: #f1f5f9;
-    }
-
-    .form-row {
-      display: grid;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    @media (min-width: 500px) {
-      .form-row.two { grid-template-columns: 1fr 1fr; }
-    }
-
-    label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #94a3b8;
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    input, select {
-      width: 100%;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      color: #f1f5f9;
-      font-size: 0.95rem;
-      padding: 0.6rem 0.85rem;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    input:focus, select:focus { border-color: #6366f1; }
-
-    .alert-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.5rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0.65rem 1.4rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
-    }
-
-    .btn:active { transform: scale(0.97); }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .btn-primary {
-      background: #6366f1;
-      color: #fff;
-      width: 100%;
-      justify-content: center;
-      margin-top: 0.5rem;
-    }
-
-    .btn-primary:hover:not(:disabled) { background: #4f46e5; }
-
-    .btn-danger {
-      background: transparent;
-      color: #ef4444;
-      border: 1px solid #ef444440;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      border-radius: 6px;
-    }
-
-    .btn-danger:hover { background: #ef444415; }
-
-    .error-msg {
-      color: #f87171;
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-      display: none;
-    }
-
-    /* Reminders list */
-    .reminder-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .reminder-item {
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .reminder-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .reminder-info { flex: 1; min-width: 0; }
-
-    .reminder-name {
-      font-weight: 600;
-      font-size: 0.975rem;
-      color: #f1f5f9;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .reminder-meta {
-      font-size: 0.8rem;
-      color: #64748b;
-      margin-top: 0.2rem;
-    }
-
-    .reminder-alert {
-      font-size: 0.78rem;
-      color: #818cf8;
-      margin-top: 0.15rem;
-    }
-
-    .empty {
-      text-align: center;
-      color: #475569;
-      padding: 2rem 0;
-      font-size: 0.9rem;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: #22c55e;
-      color: #fff;
-      padding: 0.7rem 1.4rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .toast.error { background: #ef4444; }
-  </style>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
 <div class="container">
-  <h1>⏰ Reminders</h1>
+
+  <h1>&#9200; Reminders</h1>
   <p class="subtitle">Set a reminder and get alerted on your phone via ntfy</p>
 
   <div class="ntfy-banner">
-    📱 Phone alerts go to ntfy topic: <strong>{{ ntfy_topic }}</strong><br>
+    &#128241; Phone alerts go to ntfy topic: <strong>{{ ntfy_topic }}</strong><br>
     Install the <strong>ntfy</strong> app and subscribe to this topic to receive notifications.
   </div>
 
-  <!-- Add reminder form -->
+  <!-- New reminder form -->
   <div class="card">
-    <h2>New Reminder</h2>
-    <form id="reminderForm">
+    <h2 class="card__title">New Reminder</h2>
+    <form id="reminderForm" novalidate>
+
       <div class="form-row">
         <div>
-          <label for="eventName">Event name</label>
-          <input type="text" id="eventName" placeholder="Team meeting" required />
+          <label class="form-field__label" for="eventName">Event name</label>
+          <input type="text" id="eventName" name="eventName"
+                 placeholder="Team meeting" required />
         </div>
       </div>
-      <div class="form-row two">
+
+      <div class="form-row form-row--two">
         <div>
-          <label for="eventTime">Event date &amp; time</label>
-          <input type="datetime-local" id="eventTime" required />
+          <label class="form-field__label" for="eventTime">Event date &amp; time</label>
+          <input type="datetime-local" id="eventTime" name="eventTime" required />
         </div>
         <div>
-          <label>Alert me before</label>
-          <div class="alert-row">
-            <input type="number" id="alertAmount" min="1" value="15" required />
-            <select id="alertUnit">
+          <label class="form-field__label">Alert me before</label>
+          <div class="form-field__alert-row">
+            <input type="number" id="alertAmount" name="alertAmount"
+                   min="1" value="15" required />
+            <select id="alertUnit" name="alertUnit">
               <option value="1">min</option>
               <option value="60">hrs</option>
               <option value="1440">days</option>
@@ -246,127 +48,23 @@
           </div>
         </div>
       </div>
-      <p class="error-msg" id="errorMsg"></p>
-      <button type="submit" class="btn btn-primary" id="submitBtn">Add Reminder</button>
+
+      <p class="form-error" hidden></p>
+      <button type="submit" class="btn btn--primary">Add Reminder</button>
+
     </form>
   </div>
 
-  <!-- Reminders list -->
+  <!-- Upcoming reminders -->
   <div class="card">
-    <h2>Upcoming Reminders</h2>
-    <div class="reminder-list" id="reminderList">
-      <p class="empty">No reminders yet.</p>
-    </div>
+    <h2 class="card__title">Upcoming Reminders</h2>
+    <div class="reminder-list" id="reminderList"></div>
   </div>
+
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-  const fmt = dt => new Date(dt).toLocaleString(undefined, {
-    month: "short", day: "numeric",
-    hour: "numeric", minute: "2-digit"
-  });
-
-  function showToast(msg, isError = false) {
-    const t = document.getElementById("toast");
-    t.textContent = msg;
-    t.className = "toast" + (isError ? " error" : "");
-    t.classList.add("show");
-    setTimeout(() => t.classList.remove("show"), 3000);
-  }
-
-  async function loadReminders() {
-    const res = await fetch("/api/reminders");
-    const reminders = await res.json();
-    const list = document.getElementById("reminderList");
-
-    if (!reminders.length) {
-      list.innerHTML = '<p class="empty">No upcoming reminders.</p>';
-      return;
-    }
-
-    list.innerHTML = reminders.map(r => {
-      const alertDt = new Date(r.alert_time);
-      const eventDt = new Date(r.event_time);
-      const now = new Date();
-      const diffMs = alertDt - now;
-      let timeLeft = "";
-      if (diffMs > 0) {
-        const mins = Math.floor(diffMs / 60000);
-        if (mins < 60) timeLeft = `alert in ${mins}m`;
-        else if (mins < 1440) timeLeft = `alert in ${Math.floor(mins/60)}h ${mins%60}m`;
-        else timeLeft = `alert in ${Math.floor(mins/1440)}d`;
-      }
-      return `
-        <div class="reminder-item" id="r-${r.id}">
-          <span class="reminder-icon">📅</span>
-          <div class="reminder-info">
-            <div class="reminder-name">${escHtml(r.event_name)}</div>
-            <div class="reminder-meta">Event: ${fmt(r.event_time)}</div>
-            <div class="reminder-alert">🔔 Alert: ${fmt(r.alert_time)}${timeLeft ? " · " + timeLeft : ""}</div>
-          </div>
-          <button class="btn btn-danger" onclick="deleteReminder('${r.id}')">Delete</button>
-        </div>`;
-    }).join("");
-  }
-
-  function escHtml(str) {
-    return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-  }
-
-  async function deleteReminder(id) {
-    await fetch(`/api/reminders/${id}`, { method: "DELETE" });
-    document.getElementById(`r-${id}`)?.remove();
-    const list = document.getElementById("reminderList");
-    if (!list.querySelector(".reminder-item")) {
-      list.innerHTML = '<p class="empty">No upcoming reminders.</p>';
-    }
-    showToast("Reminder deleted");
-  }
-
-  document.getElementById("reminderForm").addEventListener("submit", async e => {
-    e.preventDefault();
-    const btn = document.getElementById("submitBtn");
-    const errEl = document.getElementById("errorMsg");
-    errEl.style.display = "none";
-    btn.disabled = true;
-    btn.textContent = "Adding…";
-
-    const eventName = document.getElementById("eventName").value.trim();
-    const eventTime = document.getElementById("eventTime").value;
-    const amount = parseInt(document.getElementById("alertAmount").value);
-    const unit = parseInt(document.getElementById("alertUnit").value);
-    const alertMinutes = amount * unit;
-
-    const res = await fetch("/api/reminders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ event_name: eventName, event_time: eventTime, alert_minutes: alertMinutes })
-    });
-
-    btn.disabled = false;
-    btn.textContent = "Add Reminder";
-
-    if (res.ok) {
-      e.target.reset();
-      showToast("Reminder added!");
-      loadReminders();
-    } else {
-      const data = await res.json();
-      errEl.textContent = data.error || "Something went wrong.";
-      errEl.style.display = "block";
-    }
-  });
-
-  // Set default datetime to 1 hour from now
-  const now = new Date(Date.now() + 60 * 60 * 1000);
-  now.setSeconds(0, 0);
-  document.getElementById("eventTime").value = now.toISOString().slice(0, 16);
-
-  loadReminders();
-  // Refresh list every minute to update countdown
-  setInterval(loadReminders, 60000);
-</script>
+<script type="module" src="/static/js/app.js"></script>
 </body>
 </html>
