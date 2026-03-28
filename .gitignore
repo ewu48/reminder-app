@@ -1,0 +1,7 @@
+reminders.db
+config.json
+app.log
+nohup.out
+__pycache__/
+*.pyc
+.env
